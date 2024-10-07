@@ -13,7 +13,6 @@ const DashboardPage = () => {
         const response = await axios.get(
           "https://px4-flask-server.onrender.com/latest_data"
         );
-        console.log(response);
         setDroneData(response.data); // assuming response.data has the correct structure
       } catch (error) {
         console.error("Error fetching drone data:", error);
