@@ -10,6 +10,7 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import LayersIcon from "@mui/icons-material/Layers";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import FlightIcon from "@mui/icons-material/Flight";
+import TrafficIcon from "@mui/icons-material/Traffic";
 import { useNavigate } from "react-router-dom";
 
 export const MainListItems = () => {
@@ -28,6 +29,12 @@ export const MainListItems = () => {
           <FlightIcon />
         </ListItemIcon>
         <ListItemText primary="Drone Status" />
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate("/traffic")}>
+        <ListItemIcon>
+          <TrafficIcon />
+        </ListItemIcon>
+        <ListItemText primary="Traffic Signal" />
       </ListItemButton>
     </React.Fragment>
   );
