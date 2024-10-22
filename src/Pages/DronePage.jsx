@@ -42,7 +42,16 @@ const DronePage = () => {
   if (loading) {
     return (
       <LayoutComponent>
-        <CircularProgress />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh", // Full viewport height
+          }}
+        >
+          <CircularProgress />
+        </div>
       </LayoutComponent>
     );
   }
@@ -93,7 +102,7 @@ const DronePage = () => {
 
   return (
     <LayoutComponent>
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom style={{ marginTop: "2rem" }}>
         Drone Status
       </Typography>
 
