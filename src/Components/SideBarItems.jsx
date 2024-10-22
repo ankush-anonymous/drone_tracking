@@ -9,6 +9,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import LayersIcon from "@mui/icons-material/Layers";
 import AssignmentIcon from "@mui/icons-material/Assignment";
+import FlightIcon from "@mui/icons-material/Flight";
 import { useNavigate } from "react-router-dom";
 
 export const MainListItems = () => {
@@ -22,60 +23,42 @@ export const MainListItems = () => {
         </ListItemIcon>
         <ListItemText primary="Dashboard" />
       </ListItemButton>
-      <ListItemButton onClick={() => navigate("/orders")}>
+      <ListItemButton onClick={() => navigate("/drone")}>
         <ListItemIcon>
-          <ShoppingCartIcon />
+          <FlightIcon />
         </ListItemIcon>
-        <ListItemText primary="Orders" />
-      </ListItemButton>
-      <ListItemButton onClick={() => navigate("/customers")}>
-        <ListItemIcon>
-          <PeopleIcon />
-        </ListItemIcon>
-        <ListItemText primary="Customers" />
-      </ListItemButton>
-      <ListItemButton onClick={() => navigate("/reports")}>
-        <ListItemIcon>
-          <BarChartIcon />
-        </ListItemIcon>
-        <ListItemText primary="Reports" />
-      </ListItemButton>
-      <ListItemButton onClick={() => navigate("/integrations")}>
-        <ListItemIcon>
-          <LayersIcon />
-        </ListItemIcon>
-        <ListItemText primary="Integrations" />
+        <ListItemText primary="Drone Status" />
       </ListItemButton>
     </React.Fragment>
   );
 };
 
-export const SecondaryListItems = () => {
-  const navigate = useNavigate();
+// export const SecondaryListItems = () => {
+//   const navigate = useNavigate();
 
-  return (
-    <React.Fragment>
-      <ListSubheader component="div" inset>
-        Saved reports
-      </ListSubheader>
-      <ListItemButton onClick={() => navigate("/reports/current-month")}>
-        <ListItemIcon>
-          <AssignmentIcon />
-        </ListItemIcon>
-        <ListItemText primary="Current month" />
-      </ListItemButton>
-      <ListItemButton onClick={() => navigate("/reports/last-quarter")}>
-        <ListItemIcon>
-          <AssignmentIcon />
-        </ListItemIcon>
-        <ListItemText primary="Last quarter" />
-      </ListItemButton>
-      <ListItemButton onClick={() => navigate("/reports/year-end-sale")}>
-        <ListItemIcon>
-          <AssignmentIcon />
-        </ListItemIcon>
-        <ListItemText primary="Year-end sale" />
-      </ListItemButton>
-    </React.Fragment>
-  );
-};
+//   return (
+//     <React.Fragment>
+//       <ListSubheader component="div" inset>
+//         Saved reports
+//       </ListSubheader>
+//       <ListItemButton onClick={() => navigate("/reports/current-month")}>
+//         <ListItemIcon>
+//           <AssignmentIcon />
+//         </ListItemIcon>
+//         <ListItemText primary="Current month" />
+//       </ListItemButton>
+//       <ListItemButton onClick={() => navigate("/reports/last-quarter")}>
+//         <ListItemIcon>
+//           <AssignmentIcon />
+//         </ListItemIcon>
+//         <ListItemText primary="Last quarter" />
+//       </ListItemButton>
+//       <ListItemButton onClick={() => navigate("/reports/year-end-sale")}>
+//         <ListItemIcon>
+//           <AssignmentIcon />
+//         </ListItemIcon>
+//         <ListItemText primary="Year-end sale" />
+//       </ListItemButton>
+//     </React.Fragment>
+//   );
+// };
