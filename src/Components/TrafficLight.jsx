@@ -99,7 +99,7 @@ const TrafficLight = () => {
         />
       </Box>
       <Typography variant="h6" mt={2}>
-        {isRed ? `Red Light` : `Green Time: ${countdown}s`}
+        {isRed ? `Red Light` : `Green Time: ${Math.floor(countdown)}s`}
       </Typography>
     </Box>
   );
