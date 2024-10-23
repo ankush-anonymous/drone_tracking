@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Box, Typography } from "@mui/material";
 
 const TrafficLight = () => {
   const [greenTime, setGreenTime] = useState(0);
+  const [countdown, setCountdown] = useState(0);
+  const [isRed, setIsRed] = useState(true); // By default, the light is red
+  const countdownRef = useRef(null);
 
   const fetchGreenTime = async () => {
     try {
@@ -11,23 +14,44 @@ const TrafficLight = () => {
       );
       const data = await response.json();
       setGreenTime(data.green_time);
+      setCountdown(data.green_time); // Start countdown with the received green time
+      setIsRed(false); // Switch to green countdown
     } catch (error) {
       console.error("Error fetching green time:", error);
     }
   };
 
   useEffect(() => {
-    fetchGreenTime();
-    const intervalId = setInterval(fetchGreenTime, 5000); // Update every 5 seconds
+    fetchGreenTime(); // Initial fetch
 
-    return () => clearInterval(intervalId);
+    return () => clearInterval(countdownRef.current); // Clear interval on unmount
   }, []);
 
-  // Determine the color of the traffic light based on green time
+  useEffect(() => {
+    // If countdown is running and not red
+    if (countdown > 0 && !isRed) {
+      countdownRef.current = setInterval(() => {
+        setCountdown((prevCountdown) => prevCountdown - 1);
+      }, 1000); // Countdown every second
+    }
+
+    // When countdown hits 0 and it is not red
+    else if (countdown === 0 && !isRed) {
+      clearInterval(countdownRef.current); // Stop countdown
+      setIsRed(true); // Switch to red light
+      setTimeout(() => {
+        fetchGreenTime(); // Fetch green time after 10 seconds
+      }, 10000); // Show red for 10 seconds
+    }
+
+    return () => clearInterval(countdownRef.current); // Clear interval each time
+  }, [countdown, isRed]);
+
+  // Determine the color of the traffic light based on the countdown and red state
   const getLightColor = () => {
-    if (greenTime > 36) return "red";
-    if (greenTime > 30) return "yellow";
-    return "green";
+    if (isRed) return "red";
+    if (countdown > 5) return "green";
+    return "yellow";
   };
 
   return (
@@ -53,7 +77,7 @@ const TrafficLight = () => {
           sx={{
             width: "100%",
             height: "30px",
-            backgroundColor: "gray",
+            backgroundColor: getLightColor() === "red" ? "red" : "gray",
             borderRadius: "50%",
           }}
         />
@@ -61,7 +85,7 @@ const TrafficLight = () => {
           sx={{
             width: "100%",
             height: "30px",
-            backgroundColor: "gray",
+            backgroundColor: getLightColor() === "yellow" ? "yellow" : "gray",
             borderRadius: "50%",
           }}
         />
@@ -69,13 +93,13 @@ const TrafficLight = () => {
           sx={{
             width: "100%",
             height: "30px",
-            backgroundColor: getLightColor(),
+            backgroundColor: getLightColor() === "green" ? "green" : "gray",
             borderRadius: "50%",
           }}
         />
       </Box>
       <Typography variant="h6" mt={2}>
-        Green Time: {greenTime}s
+        {isRed ? `Red Light` : `Green Time: ${countdown}s`}
       </Typography>
     </Box>
   );
