@@ -28,10 +28,10 @@ const TrafficLight = () => {
   }, []);
 
   useEffect(() => {
-    // If countdown is running and not red
+    // If countdown is running and the light is green or yellow
     if (countdown > 0 && !isRed) {
       countdownRef.current = setInterval(() => {
-        setCountdown((prevCountdown) => prevCountdown - 1);
+        setCountdown((prevCountdown) => Math.max(prevCountdown - 1, 0));
       }, 1000); // Countdown every second
     }
 

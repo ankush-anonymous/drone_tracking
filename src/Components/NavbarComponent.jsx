@@ -45,6 +45,7 @@ const NavbarComponent = ({ open, toggleDrawer }) => {
       <Toolbar
         sx={{
           pr: "24px", // keep right padding when drawer closed
+          color: "green",
         }}
       >
         <IconButton
