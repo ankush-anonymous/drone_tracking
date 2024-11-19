@@ -113,8 +113,5 @@ Urban areas face increasing challenges with traffic congestion. This project add
 
 Contributions to the project are encouraged! Whether you're interested in adding new features, fixing bugs, or improving documentation, please submit pull requests. Follow the contribution guidelines outlined in `CONTRIBUTING.md`.
 
-## Contact
 
-For any questions, suggestions, or further assistance, feel free to reach out:
 
-- **Email**: [tusharsachan2002@gmail.com](mailto:tusharsachan2002@gmail.com) [canankushdoit@gmail.com](mailto:canankushdoit@gmail.com)
